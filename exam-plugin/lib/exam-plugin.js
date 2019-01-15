@@ -17,12 +17,20 @@ export default {
        }
     });
 
-    
-
     // Register command that toggles this view
-    this.subscriptions.add(atom.commands.add('atom-workspace', {
-      'exam-plugin:toggle': () => this.toggle()
-    }));
+     atom.commands.add('atom-workspace', {
+       'exam-plugin:toggle': () => this.toggle()
+     }),
+
+     // Destroy any ActiveEditorInfoViews when the package is deactivated.
+      new Disposable(() => {
+        atom.workspace.getPaneItems().forEach(item => {
+          if (item instanceof ExamPluginView) {
+            item.destroy();
+          }
+        });
+      })
+    );
   },
 
   deactivate() {
