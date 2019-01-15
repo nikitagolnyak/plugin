@@ -1,6 +1,6 @@
 {
   "name": "exam-plugin",
-  "main": "./lib/exam-plugin",
+  "main": "./lib/github/exam-plugin",
   "version": "0.0.0",
   "description": "A short description of your package",
   "keywords": [
@@ -14,5 +14,8 @@
     "atom": ">=1.0.0 <2.0.0"
   },
   "dependencies": {
+  }
+  "deserializers": {
+    "exam-plugin/ExamPluginView": "deserializeExamPluginView"
   }
 }
