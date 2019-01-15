@@ -37,14 +37,8 @@ export default {
     this.subscriptions.dispose();
   },
 
-  serialize() {
-    return {
-      examPluginViewState: this.examPluginView.serialize()
-    };
-  },
-
   toggle() {
-    console.log('Toggle it!')
+    atom.workspace.toggle('atom://exam-plugin');
   }
 
 };
