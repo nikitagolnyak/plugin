@@ -34,9 +34,7 @@ export default {
   },
 
   deactivate() {
-    this.modalPanel.destroy();
     this.subscriptions.dispose();
-    this.examPluginView.destroy();
   },
 
   serialize() {
@@ -46,12 +44,7 @@ export default {
   },
 
   toggle() {
-    console.log('ExamPlugin was toggled!');
-    return (
-      this.modalPanel.isVisible() ?
-      this.modalPanel.hide() :
-      this.modalPanel.show()
-    );
+    console.log('Toggle it!')
   }
 
 };
