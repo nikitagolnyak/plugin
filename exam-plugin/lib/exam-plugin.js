@@ -41,4 +41,8 @@ export default {
     atom.workspace.toggle('atom://exam-plugin');
   }
 
+  deserializeExamPlugin(serialized) {
+    return new ExamPluginView();
+  }
+
 };
