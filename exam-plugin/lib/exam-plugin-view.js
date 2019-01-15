@@ -26,4 +26,14 @@ export default class ExamPluginView {
     return this.element;
   }
 
+  getTitle() {
+    // Used by Atom for tab text
+    return 'Exam Plugin';
+  }
+
+  getURI() {
+    // Used by Atom to identify the view when toggling.
+    return 'atom://exam-plugin'
+  }
+
 }
