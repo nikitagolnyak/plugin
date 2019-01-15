@@ -1,0 +1,26 @@
+{
+  "context-menu": {
+    "atom-text-editor": [
+      {
+        "label": "Toggle exam-plugin",
+        "command": "exam-plugin:toggle"
+      }
+    ]
+  },
+  "menu": [
+    {
+      "label": "Packages",
+      "submenu": [
+        {
+          "label": "exam-plugin",
+          "submenu": [
+            {
+              "label": "Toggle",
+              "command": "exam-plugin:toggle"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
