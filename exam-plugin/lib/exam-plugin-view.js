@@ -26,6 +26,7 @@ export default class ExamPluginView {
     return this.element;
   }
 
+
   getTitle() {
     // Used by Atom for tab text
     return 'Exam Plugin';
