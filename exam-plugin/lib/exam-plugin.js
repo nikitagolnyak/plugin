@@ -5,19 +5,19 @@ import { CompositeDisposable } from 'atom';
 
 export default {
 
-  examPluginView: null,
-  modalPanel: null,
+
   subscriptions: null,
 
   activate(state) {
-    this.examPluginView = new ExamPluginView(state.examPluginViewState);
-    this.modalPanel = atom.workspace.addModalPanel({
-      item: this.examPluginView.getElement(),
-      visible: false
+    this.subscriptions = new CompositeDisposable(
+     // Add an opener for view.
+     atom.workspace.addOpener(uri => {
+       if (uri === 'atom://exam-plugin') {
+         return new ExamPluginView();
+       }
     });
 
-    // Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
-    this.subscriptions = new CompositeDisposable();
+    
 
     // Register command that toggles this view
     this.subscriptions.add(atom.commands.add('atom-workspace', {
