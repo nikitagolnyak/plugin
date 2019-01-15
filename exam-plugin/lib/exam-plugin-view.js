@@ -12,6 +12,19 @@ export default class ExamPluginView {
     message.textContent = 'The ExamPlugin package is Alive! It\'s ALIVE!';
     message.classList.add('message');
     this.element.appendChild(message);
+
+    this.subscriptions = atom.workspace.getCenter().observeExamPlugin(item => {
+     if (!atom.workspace.isTextEditor(item)) return;
+     message.innerHTML = `
+       <h2>${item.getFileName() || 'untitled'}</h2>
+       <ul>
+         <li><b>Soft Wrap:</b> ${item.softWrapped}</li>
+         <li><b>Tab Length:</b> ${item.getTabLength()}</li>
+         <li><b>Encoding:</b> ${item.getEncoding()}</li>
+         <li><b>Line Count:</b> ${item.getLineCount()}</li>
+       </ul>
+     `;
+   });
   }
 
   // Returns an object that can be retrieved when package is activated
@@ -20,6 +33,7 @@ export default class ExamPluginView {
   // Tear down any state and detach
   destroy() {
     this.element.remove();
+    this.subscriptions.dispose();
   }
 
   getElement() {
@@ -31,6 +45,14 @@ export default class ExamPluginView {
     // Used by Atom for tab text
     return 'Exam Plugin';
   }
+
+  getDefaultLocation() {
+   return 'right';
+ }
+
+ getAllowedLocations() {
+   return ['left', 'right', 'bottom'];
+ }
 
   getURI() {
     // Used by Atom to identify the view when toggling.
